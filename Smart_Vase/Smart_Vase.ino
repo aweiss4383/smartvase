@@ -1,3 +1,11 @@
+/*
+ * Created by Alex Weiss
+ * 
+ * This project uses a Qduino to power it:
+ * https://www.sparkfun.com/products/13614
+ * 
+ */
+
 #include "Qduino.h"
 #include "Wire.h"
 
@@ -7,21 +15,16 @@ const int ledPin1 = 3;
 const int ledPin2 = 5;
 const int ledPin3 = 6;
 const int ledPin4 = 9;
-
 const int needWater = 4;
 
 
 void setup() {
-  //  pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
   lipo.setup();
 
 }
 
 void loop() {
-  //  analogWrite(A5,1024);
-  //  Serial.println("moisture is:");
-  //  Serial.println(analogRead(A5));
   int moisture = map(analogRead(A5), 0, 1024, 1 , 10);
   int volts = map(analogRead(A5), 0, 1024, 0, 10);
   if (lipo.chargePercentage() >= 30) {
@@ -66,11 +69,4 @@ void loop() {
   Serial.println(moisture);
   String bat = String(lipo.chargePercentage());
   Serial.println(bat + "%");
-
-  //  digitalWrite(ledPin,HIGH);
-  //  delay(1000);
-  //  digitalWrite(ledPin,LOW);
-  //  delay(1000);
-  
-
 }
