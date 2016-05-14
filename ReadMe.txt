@@ -1,0 +1,1 @@
+Smart vase to measure soil moisture and alert the user visually to water the plant.
